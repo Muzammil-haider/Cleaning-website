@@ -14,10 +14,10 @@ export default function Home() {
 
 function Herosection() {
   return (
-    <section id="home" className="h-screen bg-[url('/images/sofa.jpg')] bg-cover bg-center relative scroll-mt-24">
-      <div className="absolute top-1/3 left-1/2 w-[90%] md:w-2/5 p-6 md:p-10 bg-[#FFF3E3] space-y-4 -translate-x-1/2 rounded-md">
+    <section id="home" className="h-screen bg-[url('/images/sofa.jpg')]  bg-cover bg-center relative scroll-mt-24">
+      <div className="absolute top-1/4 left-1/2 w-[90%] md:w-2/5 p-6 md:p-10 bg-[#FFF3E3] space-y-4 -translate-x-1/2 rounded-md">
         <p className="text-sm text-gray-600">Your Trusted Cleaning Partner</p>
-        <h2 className="text-[#B88E2F] font-extrabold text-3xl md:text-4xl">Breathe New Life <br /> Into Your Home</h2>
+        <h2 className="text-[#B88E2F] font-extrabold sm:text-2xl lg:text-3xl md:text-4xl">Breathe New Life <br /> Into Your Home</h2>
         <p className="text-sm font-light text-gray-700">
           We specialize in deep cleaning carpets, sofas, and all kinds of furniture to make your home feel fresh, hygienic, and new again.
         </p>
@@ -32,7 +32,7 @@ function ServiceSection() {
     <section id="services" className="mt-16 scroll-mt-24 px-4">
       <div className="text-center text-2xl md:text-3xl font-extrabold">Our Cleaning Services</div>
       <p className="text-center text-gray-500">We bring shine and freshness to every corner of your home</p>
-      <div className="flex flex-wrap gap-12 mt-10 justify-center">
+      <div className="flex flex-wrap gap-6 sm:gap-10 lg:gap-20 mt-10 justify-center">
         {[
           { title: "Carpet Cleaning", img: "/images/carpet.jpg" },
           { title: "Sofa Cleaning", img: "/images/sofa.jpg" },
@@ -52,12 +52,12 @@ function ServiceSection() {
 
 function ServiceCard({ title, img }: { title: string; img: string }) {
   return (
-    <div className="w-[150px] md:w-[200px]">
+    <div className="w-[150px] md:w-[200px] text-center">
       <Image className="rounded-lg" alt={title} src={img} width={200} height={200} />
+      <p className="mt-2 text-sm font-semibold text-gray-700">{title}</p>
     </div>
   );
 }
-
 function GallerySection() {
   return (
     <section id="works" className="my-16 scroll-mt-24 px-4">
@@ -94,13 +94,21 @@ function BeforeAfterSection() {
 
 function ImageGrid({ images }: { images: string[] }) {
   return (
-    <div className="flex flex-wrap gap-12 justify-center">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
       {images.map((img, idx) => (
-        <Image key={idx} className="rounded-lg" alt={`gallery-${idx}`} src={img} width={200} height={200} />
+        <div key={idx} className="aspect-[4/3] w-full relative">
+          <Image
+            alt={`gallery-${idx}`}
+            src={img}
+            fill
+            className="rounded-lg object-cover"
+          />
+        </div>
       ))}
     </div>
   );
 }
+
 
 function ContactSection() {
   return (
